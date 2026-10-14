@@ -39,7 +39,7 @@ def ejecutar_menu_principal() -> None:
         limpiar_consola()
 
         if opcion == 1:
-            lista_notas.clear()
+            limpiar_array(lista_notas)
             if cargar_notas(lista_notas,5,"Ingrese la nota del alumno","ERROR, la nota deberia estar entre 1 y 10, reingresela") == True:
                 print("ALUMNOS CARGADOS CON EXITO!")
                 mostrar_array(lista_notas,"NOTAS ALUMNOS\n","Nota alumno")
