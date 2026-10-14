@@ -39,8 +39,7 @@ def ejecutar_menu_principal() -> None:
         limpiar_consola()
 
         if opcion == 1:
-            #Si quieren vaciar la lista cada vez que tocan el punto 1 pueden usar el clear()
-            lista_notas.clear()#La clase que viene haremos un clear casero
+            lista_notas.clear()
             if cargar_notas(lista_notas,5,"Ingrese la nota del alumno","ERROR, la nota deberia estar entre 1 y 10, reingresela") == True:
                 print("ALUMNOS CARGADOS CON EXITO!")
                 mostrar_array(lista_notas,"NOTAS ALUMNOS\n","Nota alumno")
@@ -52,22 +51,29 @@ def ejecutar_menu_principal() -> None:
         elif len(lista_notas) == 0:
             print("Primero debe cargar a los alumnos")
         elif opcion == 2:
-            #2.Tenemos que mostrar la suma y el promedio total 
             suma_notas = sumar_array(lista_notas)
             cantidad_notas = len(lista_notas)
             promedio_total = calcular_promedio(suma_notas,cantidad_notas)
             mostrar_suma_promedio_notas(suma_notas,promedio_total)
         elif opcion == 3:
-            pass
+            suma_promocionados = sumar_por_rango(lista_notas,6,10)
+            cantidad_promocionados = contar_por_rango(lista_notas,6,10)
+            promedio_promocionados = calcular_promedio(suma_promocionados,cantidad_promocionados,"No hay promocionados")
+            informar_promedio(promedio_promocionados,"Promedio de promocionados:")
         elif opcion == 4:
-            pass
+            suma_aprobados = sumar_por_rango(lista_notas,4,5)
+            cantidad_aprobados = contar_por_rango(lista_notas,4,5)
+            promedio_aprobados = calcular_promedio(suma_aprobados,cantidad_aprobados,"No hay aprobados")
+            informar_promedio(promedio_aprobados,"Promedio de aprobados:")
         elif opcion == 5:
-            pass
+            cantidad_aprobados = contar_por_rango(lista_notas,4,5)
+            informar_cantidad(cantidad_aprobados,"Cantidad de aprobados:")
         elif opcion == 6:
-            pass
+            cantidad_desaprobados = contar_por_rango(lista_notas,1,3)
+            informar_cantidad(cantidad_desaprobados,"Cantidad de desaprobados:")
         elif opcion == 7:
-            pass  
+            mostrar_array_rango(lista_notas,6,10,"Error. No hay ningun alumno promocionado","ALUMNOS PROMOCIONADOS\n","Nota alumno")
         elif opcion == 8:
-            pass  
+            mostrar_array_rango(lista_notas,4,5,"Error. No hay ningun alumno aprobado","ALUMNOS APROBADOS\n","Nota alumno")
 
         refrescar_menu()

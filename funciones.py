@@ -34,6 +34,9 @@ def validar_cantidad_elementos(cantidad:int) -> bool:
 def validar_numerico(elemento:any) -> bool:
     return type(elemento) == int or type(elemento) == float
 
+def validar_rango(elemento:any, minimo:int, maximo:int) -> bool:
+    return validar_numerico(elemento) and elemento >= minimo and elemento <= maximo
+
 def sumar_array(array:list) -> int | float:
     acumulador = 0
     if type(array) == list:
@@ -43,6 +46,24 @@ def sumar_array(array:list) -> int | float:
 
     return acumulador
 
+def sumar_por_rango(array:list, minimo:int, maximo:int) -> int | float:
+    acumulador = 0
+    if type(array) == list:
+        for i in range(len(array)):
+            if validar_rango(array[i],minimo,maximo):
+                acumulador += array[i]
+
+    return acumulador
+
+def contar_por_rango(array:list, minimo:int, maximo:int) -> int:
+    contador = 0
+    if type(array) == list:
+        for i in range(len(array)):
+            if validar_rango(array[i],minimo,maximo):
+                contador += 1
+
+    return contador
+
 def calcular_promedio(acumulador: int | float, contador: int, mensaje_error: str = "ERROR") -> float | str:
     if contador != 0:
         promedio = acumulador / contador
@@ -50,3 +71,12 @@ def calcular_promedio(acumulador: int | float, contador: int, mensaje_error: str
         promedio = mensaje_error
 
     return promedio
+
+#VER CLEAR CASERO
+
+# def limpiar_array(array:list) -> bool:
+
+lista_numeros = [5,8,10,20,30,15,4]
+
+# print(sumar_por_rango(lista_numeros,5,10))
+# print(contar_por_rango(lista_numeros,5,10))
